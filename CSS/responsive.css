@@ -1,0 +1,34 @@
+/* --- RESPONSIVE DESIGN --- */
+
+/* HP Kecil (iPhone SE, dsb) */
+@media screen and (max-width: 375px) {
+  .hero-container {
+    padding: 50px 15px;
+  }
+  .hero-container h2 {
+    font-size: 20px;
+  }
+  .about-container {
+    padding: 40px 20px;
+  }
+}
+
+/* Tablet & HP Besar */
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .hero-container {
+    padding: 100px 40px;
+  }
+  .about-container {
+    padding: 80px 50px;
+  }
+}
+
+/* Layar Desktop */
+@media screen and (min-width: 1025px) {
+  .hero-container {
+    padding: 120px 0;
+  }
+  .about-container {
+    padding: 100px 0;
+  }
+}
