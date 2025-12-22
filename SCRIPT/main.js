@@ -213,12 +213,12 @@ if ("Notification" in window) {
 setInterval(() => {
     
     notify();
-}, 300000);
+}, 60000);
   
   } else {
     Notification.requestPermission().then((res) => {
-      if (res === "granted") {
-        notify();
+      if (res === "granted") { 
+    notify();
       } else if (res === "denied") {
         console.log("Izin notifikasi ditolak oleh pengguna.");
       } else if (res === "default") {
@@ -238,4 +238,5 @@ function notify() {
     vibrate: [200, 100, 200],
   });
 }
+
 
