@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.navbar {
+  background-color: #02b7ff;
+  padding: 5px 5px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  align-items: center;
+  width: 85%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  padding: 8px 8px;
+}
+
+.nav-link a {
+  background-color: #02b7ff;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.nav-link a:hover {
+  background-color: #00a7e9;
+  color: #ececec;
+}
+
+.nav-link a.active {
+  background-color: #00a7e9;
+  color: #ececec;
+}
+
+/* KALENDER */
+.calender-container {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 20px auto;
+  background-color: #ececec;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calender-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #02b7ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.header button {
+  background-color: #02b7ff;
+  color: white;
+  border: #02b7ff solid 1px;
+  padding: 3px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.header button:hover {
+  background-color: white;
+  color: #02b7ff;
+}
+
+.header button i {
+  font-size: 28px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.day {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #333;
+  padding: 5px 6px;
+  margin-left: -4px;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+  margin-left: -2px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5px 7px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.date.active {
+  background-color: #02b7ff;
+  color: white;
+}
+
+.date.inactive {
+  opacity: 0.3;
+  color: #02b7ff;
+}
+
+.date:hover {
+  background-color: #e0e0e0;
+}
+
+.date.succeed {
+  background-color: #01e235;
+  color: white;
+}
+
+.date.failed {
+  background-color: #ff3b3b;
+  color: white;
+}
+
+.date.nothedateyet {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* CONFIRMATION CALENDAR */
+.confirmation-calender {
+  left: 10%;
+  top: 30%;
+  position: absolute;
+  background-color: #02b7ff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  text-align: center;
+  /* For Event */
+  display: none;
+}
+
+.confirmation-calender span {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.confirmation-calender p {
+  text-align: center;
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.confirmation-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.confirmation-button button {
+  margin: 10px auto;
+  padding: 10px;
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#succeed-btn {
+  background-color: #01e235;
+  color: white;
+  border: #01e235 solid 1px;
+  margin-right: 20px;
+}
+
+#succeed-btn:hover {
+  background-color: white;
+  color: #01e235;
+}
+
+#failed-btn {
+  background-color: #ff3b3b;
+  color: white;
+  border: #ff3b3b solid 1px;
+}
+
+#failed-btn:hover {
+  background-color: white;
+  color: #ff3b3b;
+}
+
+.screen-focus {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  top: 0;
+  left: 0;
+  z-index: 5;
+  /* For Event */
+  display: none;
+}
+
+/* CHART */
+.chart {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 20px auto;
+  background-color: #ececec;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #02b7ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.chart h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+#chart-filter {
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* NOTIFICATION */
+.notification {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 20px auto;
+  background-color: #ececec;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notification h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #02b7ff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.notification form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification .input-group {
+  display: flex;
+  flex-direction: column;
+}
+.notification input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.notification label {
+  font-weight: bold;
+  color: #333;
+}
+
+.notification input:focus {
+  outline: none;
+  border-color: #02b7ff;
+  box-shadow: 0 0 5px rgba(2, 183, 255, 0.5);
+}
+
+.notification form button {
+  margin-top: 5px;
+  background-color: #02b7ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.notification form button:hover {
+  background-color: #00a7e9;
+}
+
+.izin-notification {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.izin-notification:hover {
+  background-color: #ffe8a1;
+}
