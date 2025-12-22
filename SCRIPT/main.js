@@ -207,11 +207,14 @@ screenFocus.addEventListener("click", () => {
 // ).value;
 // let judulNotifikasi = `${aturJudulNotifikasi}`;
 // let IntervalNotifikasi = aturIntervalNotifikasi * 1000;
-setInterval(() => {
   
 if ("Notification" in window) {
   if (Notification.permission === "granted") {
+setInterval(() => {
+    
     notify();
+}, 300000);
+  
   } else {
     Notification.requestPermission().then((res) => {
       if (res === "granted") {
@@ -227,7 +230,6 @@ if ("Notification" in window) {
   console.log("Browser tidak mendukung notifikasi.");
 }
 
-}, 300000);
   
 
 function notify() {
@@ -236,3 +238,4 @@ function notify() {
     vibrate: [200, 100, 200],
   });
 }
+
