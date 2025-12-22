@@ -207,75 +207,32 @@ screenFocus.addEventListener("click", () => {
 // ).value;
 // let judulNotifikasi = `${aturJudulNotifikasi}`;
 // let IntervalNotifikasi = aturIntervalNotifikasi * 1000;
-
-// if ("Notification" in window) {
-//   if (Notification.permission === "granted") {
-//     notify();
-//   } else {
-//     Notification.requestPermission().then((res) => {
-//       if (res === "granted") {
-//         notify();
-//       } else if (res === "denied") {
-//         console.log("Izin notifikasi ditolak oleh pengguna.");
-//       } else if (res === "default") {
-//         console.log("izin notifikasi ditutup tanpa keputusan.");
-//       }
-//     });
-//   }
-// } else {
-//   console.log("Browser tidak mendukung notifikasi.");
-// }
-
-// function notify() {
-//   const notification = new Notification(`${judulNotifikasi}`, {
-//     body: "-",
-//     vibrate: [200, 100, 200],
-//   });
-// }
-
-if ("serviceWorker" in navigator && "Notification" in window) {
-  // Register Service Worker
-  navigator.serviceWorker
-    .register("/service-worker.js")
-    .then((registration) => {
-      console.log("Service Worker registered:", registration);
-    })
-    .catch((error) => {
-      console.error("Service Worker registration failed:", error);
-    });
-
-  // Event listener untuk tombol aktivasi
-  document
-    .getElementById("izin-notification")
-    .addEventListener("click", async () => {
-      try {
-        // Minta izin notifikasi
-        const permission = await Notification.requestPermission();
-
-        if (permission === "granted") {
-          document.getElementById("status").textContent = "Notifikasi Aktif!";
-
-          // Kirim pesan ke Service Worker untuk mulai schedule
-          navigator.serviceWorker.ready.then((registration) => {
-            registration.active.postMessage({
-              type: "START_NOTIFICATION_SCHEDULE",
-            });
-          });
-
-          // Simpan status di localStorage
-          localStorage.setItem("notificationEnabled", "true");
-          localStorage.setItem("lastNotificationTime", Date.now());
-        } else {
-          document.getElementById("status").textContent =
-            "Status: Izin ditolak";
-        }
-      } catch (error) {
-        console.error("Error:", error);
+setInterval(() => {
+  
+if ("Notification" in window) {
+  if (Notification.permission === "granted") {
+    notify();
+  } else {
+    Notification.requestPermission().then((res) => {
+      if (res === "granted") {
+        notify();
+      } else if (res === "denied") {
+        console.log("Izin notifikasi ditolak oleh pengguna.");
+      } else if (res === "default") {
+        console.log("izin notifikasi ditutup tanpa keputusan.");
       }
     });
-
-  // Cek status saat load
-  if (localStorage.getItem("notificationEnabled") === "true") {
-    document.getElementById("status").textContent = "Status: Notifikasi Aktif!";
   }
+} else {
+  console.log("Browser tidak mendukung notifikasi.");
+}
+
+}, 300000);
+  
+
+function notify() {
+  const notification = new Notification('Secreet', {
+    body: "Testing",
+    vibrate: [200, 100, 200],
+  });
 }
