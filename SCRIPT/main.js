@@ -213,7 +213,7 @@ if ("Notification" in window) {
 setInterval(() => {
     
     notify();
-}, 60000);
+}, 30000);
   
   } else {
     Notification.requestPermission().then((res) => {
@@ -238,5 +238,6 @@ function notify() {
     vibrate: [200, 100, 200],
   });
 }
+
 
 
